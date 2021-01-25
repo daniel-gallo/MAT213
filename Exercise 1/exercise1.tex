@@ -1,0 +1,45 @@
+\documentclass{report}
+
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+
+\renewcommand{\exp}[1]{\operatorname{exp} \left(#1\right)}
+
+\title{Exercise 1}
+\author{Daniel Gallo, Esther Jerez, Ole Kristian, Sebastian Merkesdal}
+
+\begin{document}
+    \maketitle
+    
+    \section*{Exercise 1}
+    \begin{tcolorbox}[title=Part a]
+        Find all solutions $z$ of
+        \begin{equation*}
+            z^3 = 4i - 4
+        \end{equation*}
+    \end{tcolorbox}
+    \noindent
+    Using polar form,
+    \begin{equation*}
+        z^3 = 4i - 4 = 4\sqrt{2}\exp{\frac{3\pi}{4}i}
+    \end{equation*}
+    We know that the principal root will have radius $r = \sqrt[3]{4\sqrt{2}}$ and argument $\theta_1 = \frac{\pi}{4}$. The other two roots will be evenly spaced throughout the circle of radius $r$. Thus,
+    \begin{align*}
+        \theta_1 &= \frac{\pi}{4} \\
+        \theta_2 &= \theta_1 + \frac{2\pi}{3} = \frac{11\pi}{12} \\
+        \theta_3 &= \theta_2 + \frac{2\pi}{3} = \frac{19\pi}{12} = \frac{-5\pi}{12} \mod{2\pi}\\
+    \end{align*}
+    \begin{tcolorbox}[title=Part b]
+        Write the numbers below on rectangular form
+        \begin{equation*}
+            (\sqrt{3} - i)^{10} \quad (2 - i)^{9}
+        \end{equation*}
+    \end{tcolorbox}
+    \begin{align*}
+        (\sqrt{3} - i)^{10} &= \left(2\exp{-\frac{\pi}{6}i}\right)^{10} = 2^{10}\exp{-\frac{5\pi}{3}i} \\
+        &= 2^{10}\left(\frac{1}{2} + \frac{\sqrt{3}}{2}i\right) = 512 + 512\sqrt{3}i
+    \end{align*}
+    \begin{equation*}
+        (2 - i)^{9} = \left(\sqrt{5}\exp{\arctan{-\frac{1}{2}}i}\right)^{9} = -718 + 1199i
+    \end{equation*}
+\end{document}
