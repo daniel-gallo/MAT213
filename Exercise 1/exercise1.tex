@@ -4,6 +4,7 @@
 \usepackage{tcolorbox}
 
 \renewcommand{\exp}[1]{\operatorname{exp} \left(#1\right)}
+\renewcommand{\arctan}[1]{\operatorname{arctan} \left(#1\right)}
 
 \title{Exercise 1}
 \author{Daniel Gallo, Esther Jerez, Ole Kristian, Sebastian Merkesdal}
@@ -42,4 +43,19 @@
     \begin{equation*}
         (2 - i)^{9} = \left(\sqrt{5}\exp{\arctan{-\frac{1}{2}}i}\right)^{9} = -718 + 1199i
     \end{equation*}
+
+    \section*{Exercise 3}
+    \begin{tcolorbox}[title=Part a]
+        Consider the function $w$ given by
+        \begin{equation*}
+            w = u + vi = \frac{1}{(iz)^2} = \frac{1}{(-y + ix)^2}
+        \end{equation*}
+        Find $u(x, y)$ and $v(x, y)$
+    \end{tcolorbox}
+    \noindent
+    \begin{align*}
+        w &= \frac{1}{(-y + ix)^2} = \frac{1}{y^2 - x^2 -2xyi} \\
+        &= \frac{1}{y^2 - x^2 -2xyi} \frac{y^2 - x^2 + 2xyi}{y^2 - x^2 + 2xyi} \\
+        &= \underbrace{\frac{y^2 - x^2}{(x^2 + y^2)^2}}_{u(x, y)} + \underbrace{\frac{2xy}{(x^2 + y^2)^2}}_{v(x, y)}i
+    \end{align*}
 \end{document}
