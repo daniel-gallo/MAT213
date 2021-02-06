@@ -1,7 +1,12 @@
 \documentclass{report}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{tcolorbox}
+\usepackage{enumerate}
+
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
 
 \renewcommand{\exp}[1]{\operatorname{exp} \left(#1\right)}
 \renewcommand{\arctan}[1]{\operatorname{arctan} \left(#1\right)}
@@ -44,7 +49,7 @@
         (2 - i)^{9} = \left(\sqrt{5}\exp{\arctan{-\frac{1}{2}}i}\right)^{9} = -718 + 1199i
     \end{equation*}
     \section*{Exercise 2}
-    
+
     \section*{Exercise 3}
     \begin{tcolorbox}[title=Part a]
         Consider the function $w$ given by
@@ -89,4 +94,84 @@
         \lim_{z \to \infty}{\frac{z + 2}{z + 2i}} = \lim_{z \to \infty}{\frac{z + 2i - 2i + 2}{z + 2i}} = 1 + \lim_{z \to \infty}{\frac{-2i + 2}{z + 2i}} = 1
     \end{equation*}
     The last equality can be explained noticing that the radius of the numerator is bounded and the radius of the denominator is not.
-\end{document}
+    
+    \section*{Exercise 4}
+    \begin{tcolorbox}[title=Part a]
+        What does it mean that a function $f(z)=u(x,y)+iv(x,y)$ is analytic? Show that if $f$ is analytic, then $u$ and $v$ satisfy the Cauchy-Riemann equations.
+    \end{tcolorbox}
+    \noindent
+    We say that $f$ is analytic:
+    \begin{itemize}
+        \item On an open set $S$ if $f$ is differentiable on $S$.
+        \item At $z_0$ if it is analytic in some $\epsilon$-neighborhood of $z_0$.
+    \end{itemize}
+    With just the definition we can see that for every point in which $f$ is analytic, it is differentiable. We can now apply a theorem seen in class that affirm that if $f'$ exists, then the Cauchy-Riemann equations hold (for the points in which $f$ was analytic).
+    \begin{tcolorbox}[title=Part b]
+        What does it mean for a function $u(x,y)$ to be harmonic. Determine if the following functions are harmonic
+        \begin{align*}
+            (i) \ u(x,y)=x^2+2y^2, \quad (ii) \ u(x,y)=\sin(x)\cosh(y).
+        \end{align*}
+        Does the above imply/not imply that $u(x,y)$ is the real part of an analytic function?
+    \end{tcolorbox}
+    \noindent
+    $u\colon\R^2 \longrightarrow \R$ is called a harmonic function if $\Delta u = u_{xx} + u_{yy} = 0$.
+    \begin{enumerate}[(i)]
+        \item $u(x,y)=x^2+2y^2$
+        \begin{align*}
+            u_x&=2x & u_y&=4y \\
+            u_{xx}&=2 & u_{yy}&=4 \\
+        \end{align*}
+
+        $\Delta u = u_{xx} + u_{yy} = 2+4=6\neq 0$, so $u$ is not harmonic.
+        \item $u(x,y)=\sin(x)\cosh(y)$
+        \begin{align*}
+            u_x&=\cos(x)\cosh(y) & u_y&=\sin(x)\sinh(y) \\
+            u_{xx}&=-\sin(x)\cosh(y) & u_{yy}&=\sin(x)\cosh(y) \\
+        \end{align*}
+        $\Delta u = u_{xx} + u_{yy} =-\sin(x)\cosh(y)+\sin(x)\cosh(y)=0$, so $u$ is harmonic.
+    \end{enumerate}
+    When a function $u(x,y)$ is not harmonic, then it can not be the real part of an analytic function. In case it is harmonic, then it can be the real part of an analytic function, but it is not necessary.\\
+    Applying this for the previous functions:
+    \begin{enumerate}[(i)]
+        \item As $u(x,y)$ in this case was not harmonic, it is not the real part of an analytic function.
+        \item As $u(x,y)$ in this case was harmonic, to determine if it is the real part of an analytic function we will need to search for that function explicitly. 
+        \\Let us suppose $f(x,y)=u(x,y)+iv(x,y)$ is the analytic function we are looking for. As it is analytic, then it satisfies the Cauchy-Riemann equations (part a):\\
+        \begin{equation*}
+            u_x=\cos(x)\cosh(y)=v_y
+        \end{equation*}
+        \begin{equation*}
+            u_y=\sin(x)\sinh(y)=-v_x
+        \end{equation*}
+        Taking the first equation and integrating:\\
+        \begin{equation*}
+            v(x,y)=\int_{0}^y\cos(x)\cosh(t)dt+h(x)=\cos(x)\sinh(y)+h(x)
+        \end{equation*}
+        Now differentiating it in function of $x$ and applying the second equation:\\
+        \begin{equation*}
+            v_x=-\sin(x)\sinh(y) + h'(x) = -\sin(x)\sinh(y)
+        \end{equation*}
+        Taking everything into consideration we obtain that $v(x,y)=\cos(x)\sinh(y)$ and $f(x,y)= \sin(x)\cosh(y)+i\cos(x)\sinh(y)$. So yes, $u(x,y)$ is the real part of an analytic function.
+    \end{enumerate}
+    \begin{tcolorbox}[title=Part c]
+        Find a number $a\in\R$ such that
+        \begin{align*}
+            f(z)=f(x+iy)=\exp{axy}\cos(x^2-y^2)+i\exp{axy}\sin(x^2-y^2),
+        \end{align*}
+        is an entire function.
+    \end{tcolorbox}
+    Being an entire function means that $f(z)$ is analytic in $\C$. So we will suppose that $f(z)$ is differentiable in $\C$, and then the Cauchy-Riemann equations must hold.\\
+    \begin{equation*}
+        u(x,y)=\exp{axy}\cos(x^2-y^2), \quad v(x,y)=\exp{axy}\sin(x^2-y^2)
+    \end{equation*}
+    \begin{align*}
+        u_x&=\exp{axy}(ay\cos(x^2-y^2)-2x\sin(x^2-y^2))\\
+        u_y&=\exp{axy}(ax\cos(x^2-y^2)+2y\sin(x^2-y^2)) \\
+        v_x&=\exp{axy}(ay\sin(x^2-y^2)+2x\cos(x^2-y^2))\\
+        v_y&=\exp{axy}(ax\sin(x^2-y^2)-2y\cos(x^2-y^2)) \\
+    \end{align*}
+    Applying the equations:\\
+    \begin{align*}
+        u_x=v_y \Rightarrow a=-2\\
+        u_y=-v_x \Rightarrow a=-2\\
+    \end{align*}
+    \end{document}
