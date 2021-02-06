@@ -58,4 +58,34 @@
         &= \frac{1}{y^2 - x^2 -2xyi} \frac{y^2 - x^2 + 2xyi}{y^2 - x^2 + 2xyi} \\
         &= \underbrace{\frac{y^2 - x^2}{(x^2 + y^2)^2}}_{u(x, y)} + \underbrace{\frac{2xy}{(x^2 + y^2)^2}}_{v(x, y)}i
     \end{align*}
+    \begin{tcolorbox}[title=Part b.i]
+        Compute the limit
+        \begin{equation*}
+            \lim_{z \to -2i}{\frac{z^2 + 4}{z + 2i}}
+        \end{equation*}
+    \end{tcolorbox}
+    \begin{equation*}
+        \lim_{z \to -2i}{\frac{z^2 + 4}{z + 2i}} = \lim_{z \to -2i}{\frac{(z + 2i)(z - 2i)}{z + 2i}} = -4i
+    \end{equation*}
+    \begin{tcolorbox}[title=Part b.ii]
+        Compute the limit
+        \begin{equation*}
+            \lim_{z \to -2i}{\frac{z^2 + 2}{z + 2i}}
+        \end{equation*}
+    \end{tcolorbox}
+    \noindent
+    The numerator tends to $-2$ and the denominator to $0$, so
+    \begin{equation*}
+        \lim_{z \to -2i}{\frac{z^2 + 2}{z + 2i}} = \infty
+    \end{equation*}
+    \begin{tcolorbox}[title=Part b.iii]
+        Compute the limit
+        \begin{equation*}
+            \lim_{z \to \infty}{\frac{z + 2}{z + 2i}}
+        \end{equation*}
+    \end{tcolorbox}
+    \begin{equation*}
+        \lim_{z \to \infty}{\frac{z + 2}{z + 2i}} = \lim_{z \to \infty}{\frac{z + 2i - 2i + 2}{z + 2i}} = 1 + \lim_{z \to \infty}{\frac{-2i + 2}{z + 2i}} = 1
+    \end{equation*}
+    The last equality can be explained noticing that the radius of the numerator is bounded and the radius of the denominator is not.
 \end{document}
