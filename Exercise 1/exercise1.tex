@@ -2,17 +2,21 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{mathtools}
 \usepackage{tcolorbox}
 \usepackage{enumerate}
 
-\def\R{\mathbb{R}}
 \def\C{\mathbb{C}}
-
-\renewcommand{\exp}[1]{\operatorname{exp} \left(#1\right)}
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\renewcommand{\exp}[1]{\operatorname{exp}\left(#1\right)}
 \renewcommand{\arctan}[1]{\operatorname{arctan} \left(#1\right)}
 
 \title{Exercise 1}
-\author{Daniel Gallo, Esther Jerez, Ole Kristian, Sebastian Merkesdal}
+\author{Daniel Gallo, Esther Jerez, Ole Kristian}
 
 \begin{document}
     \maketitle
@@ -49,7 +53,38 @@
         (2 - i)^{9} = \left(\sqrt{5}\exp{\arctan{-\frac{1}{2}}i}\right)^{9} = -718 + 1199i
     \end{equation*}
     \section*{Exercise 2}
-
+    \begin{equation*}
+        A = \{z \in \C : \abs{z} < 1\}
+    \end{equation*}
+    $A$ is bounded and open, since for any $x \in A$, $x \in B(x, 1 - \abs{x}) \subset A$. $A$ is a domain and a region, because it is a nonempty open connected set.
+    \begin{equation*}
+        B = \{z \in \C : \abs{z} = 1\}
+    \end{equation*}
+    $B$ is bounded and closed, since for any $x \in B^c$, $x \in B(x, \abs{\abs{x} - 1}) \subset B^c$. $B$ is not a region because its interior is empty.
+    \begin{equation*}
+        C = \{z \in \C : 1 < \Im(z) < 2\}
+    \end{equation*}
+    $C$ is not bounded and open, since for all $x \in C$, $x \in B(x, \min{\{\Im{x} - 1, 2 - \Im{x}}\}) \subset C$. Because $C$ is connected, we can conclude that it is a domain and a region.
+    \begin{equation*}
+        D = \{z \in \C : 0 < \abs{z} \leq 1\}
+    \end{equation*}
+    $D$ is bounded but it isn't open nor closed. It's not closed because $0$ is a limit point of $D$ but it is not included in the set. It's not open because $\forall r > 0$, $B(1, r) \nsubseteq D$. It is a region, since its interior, $\{z \in \C : 0 < \abs{z} < 1\}$ is a domain and it is contained in its closure, $\{z \in \C : \abs{z} \leq 1\}$.
+    \begin{equation*}
+        E = \N
+    \end{equation*}
+    $E$ is closed and not bounded. To prove that $E^c$ is open, take any $x \in E^c$ and consider $B(x, r)$. If $\Re{x} \in \N$, pick $r = \Im{x}$. Otherwise, pick 
+    \begin{equation*}
+        r = \min{\{\Re{x} - \floor{\Re{x}}, \ceil{\Re{x}} - \Re{x}\}}
+    \end{equation*}
+    It is not a domain nor a region because it is not connected.
+    \begin{equation*}
+        F = \R
+    \end{equation*}
+    $F$ is not open because for every $x \in F$ and for every $r > 0$, $B(x, r) \nsubseteq F$. It is closed because for every $x \in F^c$, $B(x, \Im{x}) \subseteq F^c$. Obviously, it is not bounded. It's not a region because its interior is empty.
+    \begin{equation*}
+        G = \left\{\exp{\frac{i}{n}} : n \in \N\right\}
+    \end{equation*}
+    $G$ is not open because $B(\exp{i}, 0.1) \nsubseteq G$. $G$ is not closed because $1$ is a limit point of $G$ but it is not included. It is bounded. It is not a region, since its interior is empty.
     \section*{Exercise 3}
     \begin{tcolorbox}[title=Part a]
         Consider the function $w$ given by
