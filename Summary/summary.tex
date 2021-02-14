@@ -3,8 +3,17 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
-\usepackage{tcolorbox}
 \usepackage{enumerate}
+\usepackage[theorems]{tcolorbox}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+\newtcbtheorem[number within=section]%
+{theorem} % \begin..
+{Theorem} % Title
+{} % Style - default
+{thm} % label prefix; cite as ``theo:yourlabel''
+\hypersetup{colorlinks=true,linkcolor=blue}
 
 \def\C{\mathbb{C}}
 \def\R{\mathbb{R}}
@@ -54,93 +63,73 @@
     \end{align*}
 
     \section{Sufficient conditions for differentiability}
-    \begin{tcolorbox}[title=Theorem]
+    \begin{theorem}{Sufficient conditions for differentiability}{sufficient_conditions}
         If the three conditions below hold, then $f(z)$ is differentiable at $z_0$. 
         \begin{enumerate}
             \item $u_x, u_y, v_x, v_y$ exist in some neighbourhood of $z_0$.
             \item $u_x, u_y, v_x, v_y$ are continuous at $z_0$.
             \item $u_x, u_y, v_x, v_y$ satisfy the Cauchy-Riemann equations at $z_0$.
         \end{enumerate}
-    \end{tcolorbox}
-    \subsection{Example}
-    We want to know if $f(z) = \exp{z}$ is differentiable. \\
-    We can write the function as folliwing:
-    \begin{align*}
+    \end{theorem}
+    \subsection*{Example}
+    We want to know if $f(z) = \exp{z}$ is differentiable. We can write the $f$ as:
+    \begin{equation*}
         f(z) = \exp{z} = \exp{x+iy} = \exp{x}\exp{iy} = \exp{x}(\cos(y) + i\sin(y))
-    \end{align*}
+    \end{equation*}
     Then we obtain that:
-    \begin{align*}
-        u &= \exp{x}\cos(y) \\
-        v &= \exp{x}\sin(y)
-    \end{align*}
+    \begin{equation*}
+        u = \exp{x}\cos(y)
+    \end{equation*}
+    \begin{equation*}
+        v = \exp{x}\sin(y)
+    \end{equation*}
     \noindent
-    These equations are continuous in all partial point because we know that $\exp{x}, \cos(y)$ and $\sin(y)$ are continuous for everyx, which satisfies contitions (1) and (2) of the previous theorem.
-    \\ Let us check the third condition:
+    Both $u$ and $v$ are $C^\infty$, so we just have to check the Cauchy-Riemann equations to apply \ref{thm:sufficient_conditions}.
     \begin{align*}
         u_x &= \exp{x}\cos(y) = v_y = \exp{x}\cos(y) \\
-        u_y &= -\exp{x}\sin(y) = -v_x = -(\exp{x}\sin(y))
+        u_y &= -\exp{x}\sin(y) = -v_x = -\exp{x}\sin(y)
     \end{align*}
-    So we can conclude that $f(z)$ is differentiable.\\
-    
+    Since all three conditions hold, we can conclude that $f(z)$ is differentiable.
+
     \section{Analytic functions}
-    We say that a function $f$ is analytic (or holomorphic):
-    \begin{itemize}
-        \item On an open set $S$ if $f$ is differentiable on $S$.
-        \item At $z_0$ if it is analytic in some $\epsilon$-neighborhood of $z_0$.
-        \item If a function is analytic in $\C$, then we say $f$ is entire.
-    \end{itemize}
+    We say that a function $f$ is analytic (or holomorphic) at $z_0$ if it has a derivative at each point in some neighborhood of $z_0$. If it is analytic at every point of an open set $S$, we say that $f$ in analytic in $S$.
 
     \section{Harmonic functions}
     We say that $u\colon\R^2 \longrightarrow \R$ is harmonic if $\Delta u = u_{xx} + u_{yy} = 0$.
 
-    \begin{tcolorbox}[title=Theorem]
+    \begin{theorem}{Components of an analytic function are harmonic}{components_are_harmonic}
         Assume we have a function $f(z) = u(x,y) + iv(x,y)$. If f is analytic in a domain $D$, then both $u$ and $v$ are harmonic.
-    \end{tcolorbox}
-    \subsection{Example}
-    We want to know if $u(x,y) = 3x^2y-y^3$ is the real part of an analytic function.\\
-    For the previous theorem we know that if $u$ is not harmonic, then it can not be the real part of an analytic function. But in case it is harmonic, it doesn't mean it is the real part of an analytic functions. So in this type of exercise we have two steps:
-    \begin{enumerate}
-        \item Check if $u$ is harmonic.
-        \item If not, then it is not the real part of an analytic function. If yes, then we have to find the imaginary part of the analytic function we are looking for. This imaginary part must solve Cauchy-Riemann equations.
-    \end{enumerate}
+    \end{theorem}
+    \subsection*{Example}
+    We want to know if $u(x,y) = 3x^2y-y^3$ is the real part of an analytic function. From the previous theorem we know that if $u$ is not harmonic, then it cannot be the real part of an analytic function. But if $u$ is harmonic, it doesn't necessarily mean that there exists such $f$. We will look for $f$ explicitly by integrating. \\
     Let us start checking if it is harmonic:
     \begin{align*}
         u_x &= 6xy \quad \quad u_y = 3x^2-3y^2 \\
         u_{xx} &= 6y \quad \quad u_{yy} = -6y \\
     \end{align*}
-    As we can check, $\Delta u = 0 $ so  $u$ is harmonic. Now we try to find the imaginary part $v(x,y)$ solving the C.R. equations:
+    As we can check, $\Delta u = 0 $ so $u$ is harmonic. Now we try to find the imaginary part $v(x,y)$ solving the Cauchy-Riemann equations:
     \begin{align*}
         u_x &= 6xy = v_y \\
         u_y &= 3x^2-3y^2 = -v_x
     \end{align*}
-    Taking the first equation and integrating:\\
+    Taking the first equation and integrating
     \begin{equation*}
-        v(x,y)=\int_{0}^y6xydt+h(x)=3xy^2+h(x)
+        v(x,y)=\int6xydy=3xy^2+h(x)
     \end{equation*}
-    Now differentiating it in function of $x$ and applying the second equation:\\
+    Now differentiating it with respect to $x$ and applying using the second equation:\\
     \begin{equation*}
         v_x= 3y^2 + h'(x) = -u_y = -3x^2+3y^2
     \end{equation*}
     Taking everything into consideration we obtain that $v(x,y) = 3xy^2 - x^3 + C$ ($C$ is a constant) and $f(x,y)= 3x^2y-y^3+i(3xy^2 - x^3 + C)$. So yes, $u(x,y)$ is the real part of an analytic function.
     \section{Complex logarithm}
-    In the complex plane we define the logarithm as a multi-valued function:
+    In the complex plane we define the logarithm as a multi-valued function.
+    \begin{align*}
+        \log\colon \C \setminus \{0\} &\to \C \\
+        z &\mapsto \log{\abs{z}} + i\arg{z}
+    \end{align*}
+    If $z = r\exp{i\theta}$, we can write the logarithm has follows:
     \begin{equation*}
-        \log{z} = \ln{\abs{z}} + i\arg{z}
+       \log{z} = \log{r} + i(\theta + 2k\pi), \quad k \in \Z
     \end{equation*}
-     Assume $z = r\exp{i\theta}$. Then we can write the logarithm as follows:
-     \begin{equation*}
-        \log{z} = \ln{r} + i2\pi k, k\in \Z
-     \end{equation*}
-     We then define \textbf{the principal logarithm} as:
-     \begin{equation*}
-        \Log{z} = \ln{r} + i\Arg{z}
-     \end{equation*}
-     and it is defined for $z\neg 0$.
-     \subsection{Example}
-     Here we will see some examples of the new definition of logarithm in the complex numbers:
-     \begin{itemize}
-         \item $\log{1} = \ln{1} + i\arg{1} = i2\pi k$
-         \item $\log{-1} = \ln{\abs{1}} + i\arg{-1} = i\pi i2\pi k$
-         \item $\log{1+i} = \ln{\abs{1+i}} + i\arg{1+i} = \ln{\sqrt{2}} +i\frac{\pi}{4} + i2\pi k$
-     \end{itemize}
+    The \textbf{principal logarithm}, $\Log{z}$, has imaginary part in $(-\pi, \pi]$
 \end{document}
