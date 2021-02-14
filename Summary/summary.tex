@@ -1,11 +1,10 @@
-\documentclass{report}
+\documentclass{article}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{tcolorbox}
 \usepackage{enumerate}
-\usepackage{titlesec}
 
 \def\C{\mathbb{C}}
 \def\R{\mathbb{R}}
@@ -15,7 +14,6 @@
 \renewcommand{\exp}[1]{\operatorname{exp}\left(#1\right)}
 \newcommand{\Log}[1]{\operatorname{Log}\left(#1\right)}
 \newcommand{\Arg}[1]{\operatorname{Arg}\left(#1\right)}
-\titleformat*{\section}{\normalsize\bfseries}
 
 \title{Week 5 Summary}
 \author{
@@ -26,45 +24,45 @@
 \begin{document}
     \maketitle
     \noindent
+    
+    \section{Cauchy-Riemann equations}
     Assume we have a function $f(z)$, written in the form:
     \begin{align*}
         f(z) = u(x,y) + iv(x,y)
     \end{align*}
-    and $f'(x)$ exists. Then we can write the derivative as:
-    \begin{align*}
+    and $f'(z)$ exists. Then, we can write $f'(z)$ as
+    \begin{equation*}
         f'(z) = u_x(x,y) + iv_x(x,y) = -iu_y(x,y) + v_y(x,y)
-    \end{align*}
-    Notice that we have applied the Cauchy-Riemann equations ($u_x = v_y$ and $u_y = -v_x$) in the last step of the equality.
+    \end{equation*}
     
-    \section*{Cauchy-Riemann equations in polar form}
+    \section{Cauchy-Riemann equations in polar form}
     Assume we have:
     \begin{align*}
         x = r\cos(\theta) \\
         y = r\sin(\theta)
     \end{align*}
-    By applying the chain rule we get:
+    Applying the chain rule we get:
     \begin{align*}
-        \dfrac{du}{dr} &= u_r \\ &= u_x\dfrac{dx}{dr} + u_y\dfrac{dy}{dr} \\ &= u_x\cos(\theta)+u_y\sin(\theta) \\
-        \dfrac{du}{d\theta} &= u_\theta \\ &= r(u_x(-\sin(\theta)) + u_y\cos(\theta))
+        \frac{du}{dr} &= \frac{du}{dx}\frac{dx}{dr} + \frac{du}{dy}\frac{dy}{dr} \\ 
+        &= u_x\cos(\theta)+u_y\sin(\theta) \\
+        \frac{du}{d\theta} &= \frac{du}{dx}\frac{dx}{d\theta} + \frac{du}{dy}\frac{dy}{d\theta} \\ 
+        &= -ru_x\sin(\theta)+ru_y\cos(\theta)
     \end{align*}
-    Solving for $u_x$ and $u_y$ we get:
-    \begin{align*}
-        u_x = u_r\cos(\theta) - u_\theta\dfrac{1}{r}\sin(\theta) \\
-        u_y = u_r\sin(\theta) + u_\theta\dfrac{1}{r}\cos(\theta)
-    \end{align*}
-    Applying this with the Cauchy-Riemann equations to the previous expressions of $u_r$ and $u_\theta$ we obtain:
+    We can do the same thing with $v$. Applying the Cauchy-Riemann equations to these expressions we obtain:
     \begin{align*}
         ru_r &= v_\theta \\ u_\theta &= -rv_r
     \end{align*}
+
+    \section{Sufficient conditions for differentiability}
     \begin{tcolorbox}[title=Theorem]
-        For a function $f(z)$ to be differentiable in a point $z_0$ it needs to fulfill 3 conditions:
+        If the three conditions below hold, then $f(z)$ is differentiable at $z_0$. 
         \begin{enumerate}
-            \item $u_x, u_y, v_x, v_y$ all need to exist in some neighbourhood of $z_0$.
-            \item $u_x, u_y, v_x, v_y$ all need to be continuous at $z_0$.
-            \item $u_x, u_y, v_x, v_y$ all need to satisfy the Cauchy-riemann equations at $z_0$.
+            \item $u_x, u_y, v_x, v_y$ exist in some neighbourhood of $z_0$.
+            \item $u_x, u_y, v_x, v_y$ are continuous at $z_0$.
+            \item $u_x, u_y, v_x, v_y$ satisfy the Cauchy-Riemann equations at $z_0$.
         \end{enumerate}
     \end{tcolorbox}
-    \section*{Example 1}
+    \subsection{Example}
     We want to know if $f(z) = \exp{z}$ is differentiable. \\
     We can write the function as folliwing:
     \begin{align*}
@@ -84,19 +82,21 @@
     \end{align*}
     So we can conclude that $f(z)$ is differentiable.\\
     
-    \section*{Analytic functions}
-    We say that a function $f$ is analytic(or holomorphic):
+    \section{Analytic functions}
+    We say that a function $f$ is analytic (or holomorphic):
     \begin{itemize}
         \item On an open set $S$ if $f$ is differentiable on $S$.
         \item At $z_0$ if it is analytic in some $\epsilon$-neighborhood of $z_0$.
         \item If a function is analytic in $\C$, then we say $f$ is entire.
     \end{itemize}
 
+    \section{Harmonic functions}
+    We say that $u\colon\R^2 \longrightarrow \R$ is harmonic if $\Delta u = u_{xx} + u_{yy} = 0$.
+
     \begin{tcolorbox}[title=Theorem]
-        Assume we have a function $f(z) = u(x,y) + iv(x,y)$. If f is analytic in a domain $D$, then both $u$ and $v$ are harmonic.\\
-        Remember: $u\colon\R^2 \longrightarrow \R$ is called a harmonic function if $\Delta u = u_{xx} + u_{yy} = 0$.
+        Assume we have a function $f(z) = u(x,y) + iv(x,y)$. If f is analytic in a domain $D$, then both $u$ and $v$ are harmonic.
     \end{tcolorbox}
-    \section*{Example 2}
+    \subsection{Example}
     We want to know if $u(x,y) = 3x^2y-y^3$ is the real part of an analytic function.\\
     For the previous theorem we know that if $u$ is not harmonic, then it can not be the real part of an analytic function. But in case it is harmonic, it doesn't mean it is the real part of an analytic functions. So in this type of exercise we have two steps:
     \begin{enumerate}
@@ -122,7 +122,7 @@
         v_x= 3y^2 + h'(x) = -u_y = -3x^2+3y^2
     \end{equation*}
     Taking everything into consideration we obtain that $v(x,y) = 3xy^2 - x^3 + C$ ($C$ is a constant) and $f(x,y)= 3x^2y-y^3+i(3xy^2 - x^3 + C)$. So yes, $u(x,y)$ is the real part of an analytic function.
-    \section*{Chapter 3: logarithm on complex numbers}
+    \section{Complex logarithm}
     In the complex plane we define the logarithm as a multi-valued function:
     \begin{equation*}
         \log{z} = \ln{\abs{z}} + i\arg{z}
@@ -136,11 +136,11 @@
         \Log{z} = \ln{r} + i\Arg{z}
      \end{equation*}
      and it is defined for $z\neg 0$.
-     \section*{Example 3}
+     \subsection{Example}
      Here we will see some examples of the new definition of logarithm in the complex numbers:
      \begin{itemize}
          \item $\log{1} = \ln{1} + i\arg{1} = i2\pi k$
          \item $\log{-1} = \ln{\abs{1}} + i\arg{-1} = i\pi i2\pi k$
-         \item $\log{1+i} = \ln{\abs{1+i}} + i\arg{1+i} = \ln{\sqrt{2}} +i\dfrac{\pi}{4} + i2\pi k$
+         \item $\log{1+i} = \ln{\abs{1+i}} + i\arg{1+i} = \ln{\sqrt{2}} +i\frac{\pi}{4} + i2\pi k$
      \end{itemize}
 \end{document}
