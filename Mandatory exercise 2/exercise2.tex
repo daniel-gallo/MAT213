@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\def\C{\mathbb{C}}
+\def\R{\mathbb{R}}
+\renewcommand{\exp}[1]{\operatorname{exp}\left(#1\right)}
+\setlength{\parindent}{0em}
+
+\title{Mandatory assignment 2}
+\author{Daniel Gallo}
+
+\begin{document}
+    \maketitle
+
+    \begin{tcolorbox}[title=Exercise 1]
+        Find $z$ in Cartesian and polar coordinates.
+        \begin{equation*}
+            (-3 + 4i) z = -14 + 2i
+        \end{equation*}
+    \end{tcolorbox}
+    \begin{equation*}
+        z = \frac{-14 + 2i}{-3 + 4i} = \frac{-14 + 2i}{-3 + 4i} \frac{-3 -4i}{-3 - 4i} = \frac{50 + 50i}{25} = 2 + 2i = 2\sqrt{2} \exp{i\frac{\pi}{4}}
+    \end{equation*}
+    
+    \begin{tcolorbox}[title=Exercise 2]
+        Consider the function $f \colon \C \to \C$ defined by
+        \begin{equation*}
+            f(z) = e^z + z^2
+        \end{equation*}
+        \begin{enumerate}[label=(\alph*)]
+            \item Is the function multivalued?
+            \item Write $f(z)$ as $u(x, y) + iv(x, y)$. Show that $u$ and $v$ satisfy the Cauchy-Riemann equations.
+        \end{enumerate}    
+    \end{tcolorbox}
+    The function $f$ \textbf{is not multivalued} because neither $\exp{z}$ nor $z^2$ are multivalued functions.
+    \begin{align*}
+        f(z) &= e^z + z^2 = e^x e^y + (x + iy)^2 \\
+        &= e^x (\cos{y} + i\sin{y}) + x^2 - y^2 + 2xyi \\
+        &= \underbrace{x^2 - y^2 + e^x\cos{y}}_{u(x, y)} + i\underbrace{(2xy + e^x\sin{y})}_{v(x, y)}
+    \end{align*}
+    The Cauchy-Riemann equations hold because $f$ is \textbf{analytic}. Nonetheless, we can check explicitly that $u_x = v_y$ and $u_y = -v_x$.
+    \begin{align*}
+        &u_x = 2x + e^x\cos{y}  & v_x = 2y + e^x\sin{y} \\
+        &u_y = -2y - e^x\sin{y} & v_y = 2x + e^x\cos{y}
+    \end{align*}
+
+    \begin{tcolorbox}[title=Exercise 3]
+        Let $D$ be a domain in $\C$.
+        \begin{enumerate}[label=(\alph*)]
+            \item Let $f \colon D \to \C$ be analytic. Assume the values of $f$ are either real or purely imaginary. Show that $f$ has to be constant.
+            \item Let $u \colon D \to \R$ be a harmonic function. Show that any harmonic conjugate of $u$ will also be harmonic. Show that the harmonic conjugate is unique up to a constant.
+            \item Let $f \colon D \to \C$ be an analytic function. For any $z_0 \in D$ define $w_0 = f(z_0) = u_0 + iv_0$. Find the angle the lines $u(x, y) = u_0$ and $v(x, y) = v_0$ make at $w_0$.
+        \end{enumerate}
+    \end{tcolorbox}
+    \begin{enumerate}[label=(\alph*)]
+        \item If $f$ is purely real, $v$ will be identically zero. Applying the Cauchy-Riemann equations (which hold, since $f$ is analytic in $D$), we get that $u_x = u_y = 0$.  If $f$ is purely imaginary, $u$ will be identically zero, and applying the Cauchy-Riemann equations, we get that $v_x = v_y = 0$. In either case we can conclude that $u$ ($v$) is a constant.
+        \item To prove that $v$ is harmonic we have to show that $v_{xx} + v_{yy} = 0$. If we differentiate $u_x = v_y$ with respect to $y$ we get
+        \begin{equation}
+            \label{eq:vyy}
+            u_{xy} = v_{yy}
+        \end{equation}
+        Differentiating $u_y = -v_x$ with respect to $x$ we get
+        \begin{equation}
+            \label{eq:vxx}
+            u_{yx} = -v_{xx}
+        \end{equation}
+        Now we can clearly see from \eqref{eq:vyy} and \eqref{eq:vxx} that $v_{xx} + v_{yy} = -u_{yx} + u_{xy}$. Using Schwartz Theorem, we conclude that $v$ is indeed harmonic. \par
+        Assume that $v$ and $\bar{v}$ are harmonic conjugates of $u$. That means that $f = u + iv$ and $\bar{f} = u + i\bar{v}$ are analytic functions in $D$.
+        \begin{equation*}
+            \bar{f} - f = i(\bar{v} - v)
+        \end{equation*}
+        The function $\bar{f} - f$ is analytic because it is the difference of two analytic functions and purely imaginary, which means that $\bar{v} = v + C$.
+        \item TODO: ask about this
+    \end{enumerate}
+\end{document}
