@@ -7,6 +7,7 @@
 
 \def\C{\mathbb{C}}
 \def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
 \renewcommand{\exp}[1]{\operatorname{exp}\left(#1\right)}
 \setlength{\parindent}{0em}
 
@@ -76,4 +77,55 @@
         The function $\bar{f} - f$ is analytic because it is the difference of two analytic functions and purely imaginary, which means that $\bar{v} = v + C$.
         \item TODO: ask about this
     \end{enumerate}
+
+    \begin{tcolorbox}[title=Exercise 4]
+        Compute the values. If multiple valued, give all values.
+        \begin{enumerate}[label=(\alph*)]
+            \item $\exp{\ln{2} + i\pi}$
+            \item $\cos^{-1}{i}$
+            \item $i^{2i}$
+        \end{enumerate}
+    \end{tcolorbox}
+    \begin{enumerate}[label=(\alph*)]
+        \item \begin{equation*}
+            \exp{\ln{2} + i\pi} = \exp{\ln{2}}\exp{i\pi} = -2
+        \end{equation*}
+        \item Recall that
+        \begin{equation*}
+            \cos{z} = \frac{\exp{iz} + \exp{-iz}}{2}
+        \end{equation*}
+        Making that equal to $i$ and using the substitution $w = \exp{iz}$ we get
+        \begin{equation*}
+            w + w^{-1} = 2i
+        \end{equation*}
+        Multiplying everything by $w$ and rearranging the terms we get to the following quadratic:
+        \begin{equation*}
+            w^2 - 2iw + 1 = 0
+        \end{equation*}
+        Solving it we get that $\exp{iz} = w = i(1 \pm \sqrt{2})$. Isolating the $z$ we get our answer ($k \in \N$).
+        \begin{align*}
+            z &= \left(\frac{\pi}{2} + 2k\pi\right) -i\log(\sqrt{2} + 1) \\
+            z &= \left(\frac{3\pi}{2} + 2k\pi\right) -i\log(\sqrt{2} - 1) \\
+        \end{align*}
+        \item \begin{equation*}
+            i^{2i} = \exp{i \frac{\pi}{2}}^{2i} = \exp{-\pi}
+        \end{equation*}
+    \end{enumerate}
+
+    \begin{tcolorbox}[title=Exercise 5]
+        Compute $\int_C f(z) dz$
+        \begin{equation*}
+            f(z) = \sin(ix) + y\cos(y)
+        \end{equation*}
+    \end{tcolorbox}
+    Note that we can rewrite $f$ as
+    \begin{equation*}
+        f(z) = y\cos(y) + i\sinh(x)
+    \end{equation*}
+    Using the Cauchy-Riemann equations we can easily see that $F$ is an antiderivative of $f$.
+    \begin{equation*}
+        F(z) = xy\cos(y) + i\cosh(x)
+    \end{equation*}
+    Thus, $\int_C f(z) dz = F(\pi/2 + i\pi/2) - F(0) = \cosh(\pi/2) - 1$.
+
 \end{document}
