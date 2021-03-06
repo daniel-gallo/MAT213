@@ -126,6 +126,45 @@
     \begin{equation*}
         F(z) = xy\cos(y) + i\cosh(x)
     \end{equation*}
-    Thus, $\int_C f(z) dz = F(\pi/2 + i\pi/2) - F(0) = \cosh(\pi/2) - 1$.
+    Thus, $\int_C f(z) dz = F(\pi/2 + i\pi/2) - F(0) = i\cosh(\pi/2) - i$.
 
+    \begin{tcolorbox}[title=Exercise 6]
+        Let $C$ be the semicircle with parametrization $z(\theta) = 2\exp{i\theta}$, with $\theta \in [\frac{\pi}{2}, \frac{3\pi}{2}]$.
+        \begin{enumerate}[label=(\alph*)]
+            \item Show that
+            \begin{equation*}
+                \int_C{\exp{\frac{1}{z}}}dz \leq 2\pi
+            \end{equation*}
+            \item Show that
+            \begin{equation*}
+                \int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} \exp{2\cos{\theta}}(\cos(2\sin{\theta})\cos{\theta} - \sin(2\sin{\theta})\sin{\theta}) d\theta = -2\sin{1}
+            \end{equation*}
+        \end{enumerate}
+    \end{tcolorbox}
+    \begin{enumerate}[label=(\alph*)]
+        \item Note that the length of $C$ is $2\left(\frac{3\pi}{2} - \frac{\pi}{2}\right) = 2\pi$. Then, note that:
+        \begin{equation*}
+            \left|\frac{1}{z}\right| = \Re\left(\frac{1}{z}\right) = \frac{x}{x^2 + y^2} < 1
+        \end{equation*}
+        Thus, using the Theorem we saw in class, 
+        \begin{equation*}
+            \int_C{\exp{\frac{1}{z}}}dz \leq 2\pi
+        \end{equation*}
+        \item TODO: do this
+    \end{enumerate}
+
+    \begin{tcolorbox}[title=Exercise 7]
+        Let $C$ be the circle with parametrization $z(\theta) = -1 + \exp{i\theta}$. Compute $\int_C{f(z)dz}$ for the following functions:
+        \begin{enumerate}[label=(\alph*)]
+            \item \begin{equation*}
+                f(z) = \frac{1}{1 - z^2}
+            \end{equation*}
+            \item \begin{equation*}
+                f(z) = \frac{1}{1 + z^2}
+            \end{equation*}
+            \item \begin{equation*}
+                f(z) = \frac{\cos{z}}{2 + z - z^2}
+            \end{equation*}
+        \end{enumerate}
+    \end{tcolorbox}
 \end{document}
