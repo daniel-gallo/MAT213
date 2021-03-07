@@ -126,11 +126,13 @@
     \begin{equation*}
         f(z) = y\cos(y) + i\sinh(x)
     \end{equation*}
-    Using the Cauchy-Riemann equations we can easily see that $F$ is an antiderivative of $f$.
-    \begin{equation*}
-        F(z) = xy\cos(y) + i\cosh(x)
-    \end{equation*}
-    Thus, $\int_C f(z) dz = F(\pi/2 + i\pi/2) - F(0) = i\cosh(\pi/2) - i$.
+    Splitting the integral into two, we get
+    \begin{align*}
+        \int_C f(z) &= \int_0^{\frac{\pi}{2}} t\cos{t} + i\sinh 0 \, dt + \int_0^{\frac{\pi}{2}} \frac{\pi}{2}\cos{\frac{\pi}{2}} + i\sinh t \, dt \\
+        &= \int_0^{\frac{\pi}{2}} t\cos{t} \,dt + i\int_0^{\frac{\pi}{2}} \sinh t \, dt \\
+        &= t\sin{t} + \cos{t} \Bigr]_0^{\frac{\pi}{2}} + i\cosh{t} \Bigr]_0^{\frac{\pi}{2}} \\
+        &= \frac{\pi}{2} - 1 + i\left(\cosh\left(\frac{\pi}{2}\right) - 1\right)
+    \end{align*}
 
     \begin{tcolorbox}[title=Exercise 6]
         Let $C$ be the semicircle with parametrization $z(\theta) = 2\exp{i\theta}$, with $\theta \in [\frac{\pi}{2}, \frac{3\pi}{2}]$.
