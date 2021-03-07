@@ -141,7 +141,7 @@
             \end{equation*}
             \item Show that
             \begin{equation*}
-                \int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} \exp{2\cos{\theta}}(\cos(2\sin{\theta})\cos{\theta} - \sin(2\sin{\theta})\sin{\theta}) d\theta = -2\sin{1}
+                \int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} e^{2\cos{\theta}}(\cos(2\sin{\theta})\cos{\theta} - \sin(2\sin{\theta})\sin{\theta}) d\theta = -\sin{2}
             \end{equation*}
         \end{enumerate}
     \end{tcolorbox}
@@ -154,7 +154,22 @@
         \begin{equation*}
             \int_C{\exp{\frac{1}{z}}}dz \leq 2\pi
         \end{equation*}
-        \item TODO: do this
+        \item On the one hand,
+        \begin{equation*}
+            \int_C e^z dz = e^z \Bigr]^{2i}_{-2i} = e^{2i} - e^{-2i} = -2i\sin{2}
+        \end{equation*}
+        On the other hand,
+        \begin{align*}
+            \int_C e^z dz &= \int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} e^{2\exp{i\theta}} 2 i e^{i \theta} \\
+            &= 2i\int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} e^{2\cos{\theta}} \left(\cos(\theta + 2\sin \theta) + i\sin(\theta + 2\sin \theta)\right) d\theta \\
+            &= 2i\int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} e^{2\cos{\theta}} \cos(\theta + 2\sin \theta) d\theta\\
+            &= 2i\int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} e^{2\cos{\theta}} \cos(\theta + 2\sin \theta) \\
+            &= 2i \int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} e^{2\cos{\theta}}(\cos(2\sin{\theta})\cos{\theta} - \sin(2\sin{\theta})\sin{\theta}) d\theta \\
+        \end{align*}
+        In the third step we have ignored $i\sin(\theta + 2\sin \theta))$ because the result is purely imaginary. In the last one we have used the formula for $\cos(\alpha + \beta)$. Using both results, we can conclude that
+        \begin{equation*}
+            \int_{\frac{\pi}{2}}^{\frac{3\pi}{2}} e^{2\cos{\theta}}(\cos(2\sin{\theta})\cos{\theta} - \sin(2\sin{\theta})\sin{\theta}) d\theta = -\sin{2}
+        \end{equation*}
     \end{enumerate}
 
     \begin{tcolorbox}[title=Exercise 7]
