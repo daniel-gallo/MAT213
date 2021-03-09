@@ -148,11 +148,14 @@
         \end{enumerate}
     \end{tcolorbox}
     \begin{enumerate}[label=(\alph*)]
-        \item Note that the length of $C$ is $2\left(\frac{3\pi}{2} - \frac{\pi}{2}\right) = 2\pi$. Then, note that:
-        \begin{equation*}
-            \left|\frac{1}{z}\right| = \Re\left(\frac{1}{z}\right) = \frac{x}{x^2 + y^2} < 1
-        \end{equation*}
-        Thus, using the Theorem we saw in class, 
+        \item The length of $C$ is $2\left(\frac{3\pi}{2} - \frac{\pi}{2}\right) = 2\pi$. Note that:
+        \begin{align*}
+            \left|\exp{\frac{1}{z}}\right| &= \exp{\Re\left(\frac{1}{z}\right)} \\
+            &= \exp{\frac{x}{x^2 + y^2}} \\
+            &= \exp{\frac{\cos{\theta}}{2}} \\
+            &\leq 1 & \text{because } \frac{\pi}{2} \leq \theta \leq \frac{3\pi}{2}
+        \end{align*}
+        Thus, using the theorem we saw in class, 
         \begin{equation*}
             \int_C{\exp{\frac{1}{z}}}dz \leq 2\pi
         \end{equation*}
